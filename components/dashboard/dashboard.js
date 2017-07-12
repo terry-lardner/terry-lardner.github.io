@@ -2,14 +2,12 @@ angular.module('dashboard',['programService'])
 .component('dashboard', {
 	templateUrl: "components/dashboard/dashboard.html",
 	bindings: {
-		companyId: '<',
-		hero: '='
+		companyId: '<'
 	},
 	controller: ['$http', 'programs', '$log', function($http, programs, $log){
 		var ctrl = this;
 		//self.programs = [];
 		ctrl.companyId = 41285;
-		console.dir(ctrl);
 		$http({
         method: 'GET',
         url: 'https://uk.bookingbug.com/api/v1/' + ctrl.companyId + '/services?page=1&per_page=7', //41285
@@ -36,11 +34,8 @@ angular.module('dashboard',['programService'])
               }
 			}
             
-            // displayResult('Found ' + ctrl.services.length + ' services!');
-
-        },  function err(res) {
-            // displayResult(res.data.error);
-            console.log(res)
+        }, function err(res) {
+            $log.log(res)
 		});
 		
 
