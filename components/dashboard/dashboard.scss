@@ -1,0 +1,67 @@
+#dashboard{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column;
+	height: 500px;
+}
+
+h2 {
+	padding: 12px 0;
+	border-bottom: 1px solid black;
+}
+.container {
+	font-size: 16px;
+}
+
+.service-name {
+	text-transform: capitalize;
+	font-weight: 600;
+}
+
+.service-price-container {
+	position:relative;
+	bottom: 0;
+}
+
+.service-price {
+	color: #FF7115;
+}
+
+
+.service-item {
+	margin: 16px 0 48px 0;
+	position: relative;
+}
+
+.services-total {
+	font-size: 1.2em;
+	font-weight: 800;
+	width: 100%;
+	border-top: 1px solid black;
+	text-align: right;
+}
+
+.error {
+	color: red;
+}
+
+
+
+@media (min-width: 992px) {
+	.service-item {
+		height: 160px;
+		margin: 16px 0;
+	}
+
+	.service-price-container {
+		position:absolute;
+		bottom: 0;
+	}
+}
+
+@media (min-width: 1200px) {
+	.service-item {
+		height: 300px;
+	}
+}
