@@ -1,15 +1,17 @@
-angular.module('dashboard',['programService'])
+'use strict';
+
+angular.module('dashboard',['apiService'])
 .component('dashboard', {
 	templateUrl: "components/dashboard/dashboard.html",
 	bindings: {
 		companyId: '<'
 	},
-	controller: ['$http', 'programs', '$log', function($http, programs, $log){
+	controller: ['$http', 'api', '$log', function($http, api, $log){
 		var ctrl = this;
 		//self.programs = [];
-    ctrl.companyId = 41285;
+    ctrl.companyId = 41285; //41285
 		
-    programs.getServicesByCompanyId(ctrl.companyId).then(function(data) {
+    api.getServicesByCompanyId(ctrl.companyId).then(function(data) {
       ctrl.services = data._embedded.services;
 
       for (var i=0; i<ctrl.services.length; i++) {
@@ -25,10 +27,7 @@ angular.module('dashboard',['programService'])
           ctrl.services[i].prices[j] = formatPrice(ctrl.services[i].prices[j]);
         }
       }
-
     });
-
-    
 	}]
 }); 
 
