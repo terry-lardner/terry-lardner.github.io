@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('apiService', ['constant'])
-.service('api', ['$http', '$log','constants', function ($http, $log, constants) {
+.service('apiService', ['$http', '$log','constants', function ($http, $log, constants) {
     
     this.getServicesByCompanyId = function(companyId) {
         return $http({
@@ -14,7 +14,7 @@ angular.module('apiService', ['constant'])
         cache: true
         
         }).then(function success(res) {
-            return res.data;
+            return res.data._embedded.services;
 
         }, function err(res) {
             $log.log(res)

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "http-server",
     "build": "gulp sass & gulp scripts & gulp angular",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "test": "karma start"
   },
   "keywords": [
     "Jiff",
@@ -35,6 +36,7 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2"
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "^1.0.0"
   }
 }

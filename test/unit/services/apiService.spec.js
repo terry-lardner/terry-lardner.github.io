@@ -1,6 +1,9 @@
 'use strict';
 
-describe('Dashboard test suite', function(){
+describe('ApiServices test suite', function(){
+    beforeEach(function() {
+        angular.mock.module('apiService')
+    });
 
     it('Should test something', function() {
         var list = [1,2,3];

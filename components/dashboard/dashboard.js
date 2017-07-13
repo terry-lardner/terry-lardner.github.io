@@ -2,17 +2,23 @@
 
 angular.module('dashboard',['apiService'])
 .component('dashboard', {
-	templateUrl: "components/dashboard/dashboard.html",
+  templateUrl: "components/dashboard/dashboard.html",
 	bindings: {
 		companyId: '<'
 	},
-	controller: ['$http', 'api', '$log', function($http, api, $log){
-		var ctrl = this;
-		//self.programs = [];
+	controller: ['$http', 'apiService', '$log', DashboardController]
+}); 
+
+function DashboardController($http, apiService, $log) {
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
     ctrl.companyId = 41285; //41285
-		
-    api.getServicesByCompanyId(ctrl.companyId).then(function(data) {
-      ctrl.services = data._embedded.services;
+    ctrl.services = [];
+  
+    //self.programs = [];
+    apiService.getServicesByCompanyId(ctrl.companyId).then(function(data) {
+      ctrl.services = data;
 
       for (var i=0; i<ctrl.services.length; i++) {
         if (ctrl.services[i].prices.length <= 0) {
@@ -28,8 +34,9 @@ angular.module('dashboard',['apiService'])
         }
       }
     });
-	}]
-}); 
+  }
+		
+}
 
 function formatPrice(price) {
     return Number(price/100).toFixed(2);
