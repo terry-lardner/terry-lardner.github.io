@@ -36,6 +36,7 @@ gulp.task('sass', function () {
 
 var js_files = [
 	'./js/app.js',
+	'./js/app.constants.js',
   './components/**/*.js', // include all components 
   './services/*.js'  // include all services 
 ];
