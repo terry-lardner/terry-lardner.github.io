@@ -3,9 +3,6 @@
 angular.module('dashboard',['apiService'])
 .component('dashboard', {
   templateUrl: "components/dashboard/dashboard.html",
-	bindings: {
-    companyId: '<'
-	},
 	controller: ['$http', 'apiService', '$log', DashboardController]
 }); 
 
@@ -13,16 +10,21 @@ function DashboardController($http, apiService, $log) {
   var ctrl = this;
 
   ctrl.$onInit = function() {
-    ctrl.companyId = 41285; //41285
+    ctrl.companyId = 41285;
     ctrl.services = [];
+    ctrl.getServices = getServices;
     ctrl.formatPrice = formatPrice;
     ctrl.normalizeData = normalizeData;
 
-    apiService.getServicesByCompanyId(ctrl.companyId).then(function(data) {
-      if (!data) return;
-      ctrl.services = ctrl.normalizeData(data);
-    });
-
+    function getServices(companyId) {
+      apiService.getServicesByCompanyId(companyId).then(function(data) {
+        if (!data) {
+          ctrl.services = [];
+          return;
+        }
+        ctrl.services = ctrl.normalizeData(data);
+      });
+    }
 
     function normalizeData(data) {
       var serviceList = JSON.parse(JSON.stringify(data));
