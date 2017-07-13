@@ -1,41 +1,25 @@
-// describe('Component: Dashboard test suite', function () {
-//     var scope,
-//     element;
+'use strict';
+describe('Component: dashboard test suite', function () { 
+    beforeEach(module('dashboard'));
+    beforeEach(module('templates'));
+    var scope, 
+    element;
 
-//     beforeEach(function() {
-//         module('dashboard');
-
-//         inject(function($rootScope, $compile){
-//             scope = $rootScope.$new();
-            
-//             scope.services = [
-//                 {
-//                     name: "Service name 1",
-//                     description: "Service name 1 description",
-//                     prices: [10000]
-//                 }, 
-//                 {
-//                     name: "Service name 2",
-//                     description: "Service name 2 description",
-//                     prices: [35000]
-//                 }
-//                 , 
-//                 {
-//                     name: "Service name 2",
-//                     prices: [45000]
-//                 }
-//             ]
-//             element = angular.element('<dashboard></dashboard>');
-//             element = $compile(element)(scope);
-//             scope.$digest();
-//         })
-//     });
- 
-//     it('should render the text', function() {
-//             console.log(element);
+    beforeEach(inject(function ($rootScope, $compile) {         
+        scope = $rootScope.$new(); 
         
-//         var h2 = element.find('h2');
-//         console.log(h2)
-//         expect(h2.text()).toBe('Booking Bug code test');
-//     });
-// });
+        element = angular.element('<dashboard></dashboard>'); 
+        element = $compile(element)(scope);
+        scope.$apply();   
+    }));
+
+    it('should render page title', function () {
+        var title = element.find('h2');
+        expect(title.text()).toBe('Booking Bug code test');
+    });
+
+    it('should render 0 results shown in total if there is no data', function () {
+        var displayedServices = element[0].querySelector('.services-total');
+        expect(displayedServices.innerText).toBe('Showing 0 services');
+    });
+});

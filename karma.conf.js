@@ -7,8 +7,9 @@ module.exports = function (config) {
 
         files: [
             'dist/lib.min.js',
-            'dist/app.min.js',
             'node_modules/angular-mocks/angular-mocks.js',
+            'dist/app.min.js',
+            'components/**/*.html',
             'test/unit/**/*.spec.js'
         ],
         reporters: [
@@ -20,6 +21,13 @@ module.exports = function (config) {
         autoWatch: true,
         browsers: ['Chrome'],
         singleRun: false,
-        reporters: ['kjhtml']
+        reporters: ['kjhtml'], 
+        preprocessors: {   
+            'components/**/*.html': 'ng-html2js'
+        },
+
+        ngHtml2JsPreprocessor: {
+            moduleName: 'templates' 
+        }
     });
 };
