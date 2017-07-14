@@ -7,7 +7,8 @@
     "start": "http-server",
     "build": "gulp sass & gulp scripts & gulp angular",
     "watch": "gulp watch",
-    "test": "karma start"
+    "test": "karma start",
+    "build.prod": "ng build --aot --prod --progress false --base-href \"https://terry-lardner.github.io/bookingBugDev/\""
   },
   "keywords": [
     "Jiff",
