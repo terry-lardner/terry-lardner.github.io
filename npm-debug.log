@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'build' ]
+2 info using npm@3.10.10
+3 info using node@v7.2.1
+4 verbose run-script [ 'prebuild', 'build', 'postbuild' ]
+5 info lifecycle jiff@1.0.0~prebuild: jiff@1.0.0
+6 silly lifecycle jiff@1.0.0~prebuild: no script for prebuild, continuing
+7 info lifecycle jiff@1.0.0~build: jiff@1.0.0
+8 verbose lifecycle jiff@1.0.0~build: unsafe-perm in lifecycle true
+9 verbose lifecycle jiff@1.0.0~build: PATH: C:\Program Files (x86)\nodejs\node_modules\npm\bin\node-gyp-bin;D:\WebDev\BookingBugTest\node_modules\.bin;C:\Cmder\bin;C:\Cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\Cmder\vendor\conemu-maximus5;C:\Cmder\vendor\conemu-maximus5\ConEmu;c:\programdata\oracle\java\javapath;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0\;c:\program files (x86)\amd\ati.ace\core-static;d:\program files\cvsnt;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\GitExtensions\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\dotnet\;C:\Ruby23-x64\bin;C:\Program Files (x86)\Ruby23-x64\bin;C:\Program Files (x86)\Java\jdk1.8.0_31;D:\WORK\UnixTools;C:\Users\Rendralt\AppData\Local\Android\sdk\platform-tools;C:\Program Files\MongoDB\Server\3.2\bin;D:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Rendralt\AppData\Local\Microsoft\WindowsApps;C:\Users\Rendralt\AppData\Roaming\npm;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\Cmder\
+10 verbose lifecycle jiff@1.0.0~build: CWD: D:\WebDev\BookingBugTest
+11 silly lifecycle jiff@1.0.0~build: Args: [ '/d /s /c',
+11 silly lifecycle   'gulp sass & gulp scripts & gulp angular & gulp rewrite' ]
+12 silly lifecycle jiff@1.0.0~build: Returned: code: 1  signal: null
+13 info lifecycle jiff@1.0.0~build: Failed to exec build script
+14 verbose stack Error: jiff@1.0.0 build: `gulp sass & gulp scripts & gulp angular & gulp rewrite`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:885:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid jiff@1.0.0
+16 verbose cwd D:\WebDev\BookingBugTest
+17 error Windows_NT 10.0.15063
+18 error argv "C:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "build"
+19 error node v7.2.1
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error jiff@1.0.0 build: `gulp sass & gulp scripts & gulp angular & gulp rewrite`
+22 error Exit status 1
+23 error Failed at the jiff@1.0.0 build script 'gulp sass & gulp scripts & gulp angular & gulp rewrite'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the jiff package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     gulp sass & gulp scripts & gulp angular & gulp rewrite
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs jiff
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls jiff
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

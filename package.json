@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "http-server",
-    "build": "gulp sass & gulp scripts & gulp angular & gulp rewrite",
+    "build": "gulp sass & gulp scripts & gulp angular & gulp redirects",
     "watch": "gulp watch",
     "test": "karma start",
     "build.prod": "ng build --aot --prod --progress false --base-href \"https://terry-lardner.github.io/bookingBugDev/\""
