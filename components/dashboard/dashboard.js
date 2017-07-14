@@ -20,13 +20,12 @@ function DashboardController($http, apiService, $log) {
     
     function getServices(companyId) {
       var normalizedData;
-      apiService.getServicesByCompanyId(companyId).then(function(data) {
-        if (!data) {
+      apiService.getServicesByCompanyId(companyId).then(function(res) {
+        if (res.status != 200) {
           ctrl.services = [];
           return;
         }
-
-        ctrl.services = normalizeData(data);
+        ctrl.services = normalizeData(res.data._embedded.services);
       });
     }
 

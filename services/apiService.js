@@ -8,7 +8,7 @@ angular.module('apiService', ['constant'])
     function getServicesByCompanyId(companyId) {
         return $http({
             method: 'GET',
-            url: 'https://uk.bookingbug.com/api/v1/' + companyId + '/services?page=1&per_page=7', //41285
+            url: 'https://uk.bookingbug.com/api/v1/' + companyId + '/services', //41285
             headers: {
                 'App-Id': constants.API_ID,
                 'App-Key': constants.API_KEY
@@ -16,10 +16,10 @@ angular.module('apiService', ['constant'])
             cache: true
         
         }).then(function success(res) {
-            return res.data._embedded.services;
+            return res;
 
         }).catch(function err(res) {
-            $log.log(res)
+            return res;
         });
     }
 }]);
