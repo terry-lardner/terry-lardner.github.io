@@ -1,14 +1,11 @@
 'use strict';
 
-describe('ApiServices test suite', function(){
-    var ApiService, 
-    $q, 
-    $httpBackend;
+describe('Service: ApiServices test suite', function(){
+    beforeEach(module('apiService'));
 
-    // Add Pokeapi endpoint
+    var ApiService,
+    httpBackend;
     var API = 'https://uk.bookingbug.com/api/v1/';
-
-    // Add mocked Pokéapi response
     var RESPONSE_SUCCESS = {
         "total_entries": 1,
         "_embedded": {
@@ -74,12 +71,9 @@ describe('ApiServices test suite', function(){
         }
     }
 
-    beforeEach(module('apiService'));
-
-    beforeEach(inject(function(apiService, _$q_, _$httpBackend_) {
+    beforeEach(inject(function(apiService, $httpBackend) {
         ApiService = apiService;
-        $q = _$q_;
-        $httpBackend = _$httpBackend_;
+        httpBackend = $httpBackend;
     }));
 
     it('should exist a function getServicesByCompanyId', function() {
@@ -91,12 +85,59 @@ describe('ApiServices test suite', function(){
 
         beforeEach(function() {
             result = {};
+            spyOn(ApiService, "getServicesByCompanyId").and.callThrough();
         });
 
-        it('should return an array of service objects', function() {
+        it('should contain an array of services objects', function() {
             var companyId = 41256;
 
-            $httpBackend.whenGET(API + search + '/services').respond(200, $q.when(RESPONSE_SUCCESS));
+            httpBackend.whenGET(API + companyId + '/services').respond(200, RESPONSE_SUCCESS);
+
+            ApiService.getServicesByCompanyId(companyId)
+            .then(function(res) {
+                result = res.data;
+                expect(ApiService.getServicesByCompanyId).toHaveBeenCalledWith(companyId);
+                expect(result._embedded.services.length).toBeGreaterThan(0);
+            });
+            httpBackend.flush();
+
+        });
+
+        it('should return a 404 if there are no services found', function() {
+            var companyId = 0;
+
+            httpBackend.whenGET(API + companyId + '/services').respond(404);
+
+            ApiService.getServicesByCompanyId(companyId)
+            .then(function(res) {
+                expect(ApiService.getServicesByCompanyId).toHaveBeenCalledWith(companyId);
+                expect(res.status).toEqual(404);
+            });
+            httpBackend.flush();
+
         });
     });
+
+    describe('when a service is found', function() {
+    var result;
+
+        beforeEach(function() {
+            result = {};
+            spyOn(ApiService, "getServicesByCompanyId").and.callThrough();
+        });
+
+        it('should have a name', function() {
+            var companyId = 41256;
+
+            httpBackend.whenGET(API + companyId + '/services').respond(200, RESPONSE_SUCCESS);
+
+            ApiService.getServicesByCompanyId(companyId)
+            .then(function(res) {
+                result = res.data;
+                expect(ApiService.getServicesByCompanyId).toHaveBeenCalledWith(companyId);
+                expect(result._embedded.services[0].name).toBeDefined();
+            });
+            httpBackend.flush();
+        });
+    })
 });

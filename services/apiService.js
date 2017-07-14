@@ -8,7 +8,7 @@ angular.module('apiService', ['constant'])
     function getServicesByCompanyId(companyId) {
         return $http({
             method: 'GET',
-            url: 'https://uk.bookingbug.com/api/v1/' + companyId + '/services', //41285
+            url: 'https://uk.bookingbug.com/api/v1/' + companyId + '/services',
             headers: {
                 'App-Id': constants.API_ID,
                 'App-Key': constants.API_KEY
