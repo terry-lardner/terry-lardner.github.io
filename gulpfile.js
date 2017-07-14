@@ -29,6 +29,16 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./dist')); 
 });
 
+var redirects_file = [
+  './_redirects'
+]
+
+gulp.task('redirects', function () {
+  console.log("moving _redirects file");
+  gulp.src(redirects_file)
+    .pipe(gulp.dest('./dist')); 
+});
+
 /* 
  * Combine all js files into single minified file 
  * optimized for production 

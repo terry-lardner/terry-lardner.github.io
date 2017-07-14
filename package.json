@@ -4,11 +4,12 @@
   "description": "Jiff Boilerplate App",
   "main": "index.js",
   "scripts": {
+    "ng": "ng",
     "start": "http-server",
-    "build": "gulp sass & gulp scripts & gulp angular",
+    "build": "gulp sass & gulp scripts & gulp angular & gulp rewrite",
     "watch": "gulp watch",
     "test": "karma start",
-    "build.prod": "npm run build --aot --prod --progress false --base-href \"https://terry-lardner.github.io/bookingBugDev/\""
+    "build.prod": "ng build --aot --prod --progress false --base-href \"https://terry-lardner.github.io/bookingBugDev/\""
   },
   "keywords": [
     "Jiff",
