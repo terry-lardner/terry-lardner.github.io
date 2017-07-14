@@ -16,13 +16,17 @@ function DashboardController($http, apiService, $log) {
     ctrl.formatPrice = formatPrice;
     ctrl.normalizeData = normalizeData;
 
+    getServices(ctrl.companyId);
+    
     function getServices(companyId) {
+      var normalizedData;
       apiService.getServicesByCompanyId(companyId).then(function(data) {
         if (!data) {
           ctrl.services = [];
           return;
         }
-        ctrl.services = ctrl.normalizeData(data);
+
+        ctrl.services = normalizeData(data);
       });
     }
 
@@ -35,7 +39,7 @@ function DashboardController($http, apiService, $log) {
         }
       
         for(var j=0; j<serviceList[i].prices.length;j++) {
-          serviceList[i].prices[j] = ctrl.formatPrice(serviceList[i].prices[j]);
+          serviceList[i].prices[j] = formatPrice(serviceList[i].prices[j]);
         }
       }
 
